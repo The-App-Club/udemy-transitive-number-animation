@@ -10,13 +10,13 @@ import {usePrevious} from './hooks/usePrevious';
 import '@fontsource/kaushan-script';
 import './styles/index.scss';
 
-const StyledCounter = styled.div`
+const StyledContainer = styled.div`
   display: grid;
   min-height: 100vh;
   place-items: center;
 `;
 
-const StyledContainer = styled.div`
+const StyledCounter = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
@@ -40,8 +40,8 @@ const App = () => {
   const [count, {incrementCount, decrementCount}] = useCounter();
   const lastValue = usePrevious(count);
   return (
-    <StyledCounter>
-      <StyledContainer>
+    <StyledContainer>
+      <StyledCounter>
         <StyledController>
           <Button
             variant={'outlined'}
@@ -65,8 +65,8 @@ const App = () => {
           </Button>
         </StyledController>
         <Number tik={tik} count={count} lastValue={lastValue} isUp={isUp} />
-      </StyledContainer>
-    </StyledCounter>
+      </StyledCounter>
+    </StyledContainer>
   );
 };
 
