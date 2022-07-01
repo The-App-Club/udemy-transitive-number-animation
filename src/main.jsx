@@ -6,19 +6,26 @@ import {Button} from '@mui/material';
 
 import {useState} from 'react';
 
+import {usePrevious} from './hooks/usePrevious';
+
 const App = () => {
   const [count, setCount] = useState(0);
+
+  const lastValue = usePrevious(count);
 
   const handleUp = (e) => {
     setCount((count) => {
       return count + 1;
     });
+
+    console.log(`handleUp`, lastValue, count);
   };
 
   const handleDown = (e) => {
     setCount((count) => {
       return count - 1;
     });
+    console.log(`handleDown`, lastValue, count);
   };
 
   return (
