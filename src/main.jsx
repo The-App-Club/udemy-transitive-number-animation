@@ -4,7 +4,23 @@ import '@fontsource/kaushan-script';
 import './styles/index.scss';
 import {Button} from '@mui/material';
 
+import {useState} from 'react';
+
 const App = () => {
+  const [count, setCount] = useState(0);
+
+  const handleUp = (e) => {
+    setCount((count) => {
+      return count + 1;
+    });
+  };
+
+  const handleDown = (e) => {
+    setCount((count) => {
+      return count - 1;
+    });
+  };
+
   return (
     <div
       className={css`
@@ -21,7 +37,7 @@ const App = () => {
           align-items: center;
           flex-direction: column;
           gap: 1rem;
-          border: 1px solid;
+          /* border: 1px solid; */
         `}
       >
         <div
@@ -32,8 +48,12 @@ const App = () => {
             gap: 1rem;
           `}
         >
-          <Button variant={'outlined'}>Up</Button>
-          <Button variant={'outlined'}>Down</Button>
+          <Button variant={'outlined'} onClick={handleUp}>
+            Up
+          </Button>
+          <Button variant={'outlined'} onClick={handleDown}>
+            Down
+          </Button>
         </div>
         <p
           className={css`
@@ -42,7 +62,7 @@ const App = () => {
             align-items: center;
           `}
         >
-          0
+          {count}
         </p>
       </div>
     </div>
