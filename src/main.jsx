@@ -8,23 +8,19 @@ import {useState} from 'react';
 
 import {usePrevious} from './hooks/usePrevious';
 
-const App = () => {
-  const [count, setCount] = useState(0);
+import {useCounter} from './hooks/useCounter';
 
+const App = () => {
+  const [count, {increment, decrement}] = useCounter();
   const lastValue = usePrevious(count);
 
   const handleUp = (e) => {
-    setCount((count) => {
-      return count + 1;
-    });
-
+    increment();
     console.log(`handleUp`, lastValue, count);
   };
 
   const handleDown = (e) => {
-    setCount((count) => {
-      return count - 1;
-    });
+    decrement();
     console.log(`handleDown`, lastValue, count);
   };
 
