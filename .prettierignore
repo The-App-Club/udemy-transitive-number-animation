@@ -1,0 +1,9 @@
+node_modules
+.gitignore
+.prettierignore
+*png
+*ico
+*txt
+.env
+yarn.lock
+.gitkeep
