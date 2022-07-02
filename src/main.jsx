@@ -10,17 +10,25 @@ import {usePrevious} from './hooks/usePrevious';
 
 import {useCounter} from './hooks/useCounter';
 
+import {Number} from './components/Number';
+
 const App = () => {
+  const [tik, setTik] = useState(new Date());
+  const [isUp, setIsUp] = useState(false);
   const [count, {increment, decrement}] = useCounter();
   const lastValue = usePrevious(count);
 
   const handleUp = (e) => {
     increment();
+    setTik(new Date());
+    setIsUp(true);
     console.log(`handleUp`, lastValue, count);
   };
 
   const handleDown = (e) => {
     decrement();
+    setTik(new Date());
+    setIsUp(false);
     console.log(`handleDown`, lastValue, count);
   };
 
@@ -58,7 +66,13 @@ const App = () => {
             Down
           </Button>
         </div>
-        <p
+        <Number
+          lastValue={lastValue}
+          currentValue={count}
+          isUp={isUp}
+          tik={tik}
+        />
+        {/* <p
           className={css`
             display: flex;
             justify-content: center;
@@ -66,7 +80,7 @@ const App = () => {
           `}
         >
           {count}
-        </p>
+        </p> */}
       </div>
     </div>
   );
